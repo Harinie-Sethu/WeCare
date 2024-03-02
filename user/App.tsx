@@ -1,29 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Linking,Text, View } from 'react-native';
-import {Assets, Image,Button,Colors} from 'react-native-ui-lib';
+// Import necessary dependencies
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import DashboardScreen from './screens/DashboardScreen'; // Page 0
+import VitalsScreen from './screens/VitalsScreen'; // Page 1
+import PuzzlesScreen from './screens/PuzzlesScreen'; // Page 2
+import TranscriptionScreen from './screens/TranscriptionScreen'; // Page 3
 
+// Create a bottom tab navigator
+const Tab = createBottomTabNavigator();
 
-const redirMetrics = (filename: string) => {
-  // Assuming the filenames are valid and exist in the same directory
-  Linking.openURL(filename);
-};
-export default function App() {
+// App component
+const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Button label={'Transcribe appointment'} size={Button.sizes.medium} backgroundColor={Colors.red30}/>
-      <Button margin-5 label={'Track your health'} size={Button.sizes.medium} backgroundColor={Colors.red30} onPress={() => redirMetrics('health_metrics')}/>
-      <Button label={'Sharpen your brain'} size={Button.sizes.medium} backgroundColor={Colors.red30}/>
-      <Text>hoi jay and mansa!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      {/* Bottom tab navigator for the main screens */}
+      <Tab.Navigator>
+        <Tab.Screen name="Dashboard" component={DashboardScreen} />
+        <Tab.Screen name="Vitals" component={VitalsScreen} />
+        <Tab.Screen name="Puzzles" component={PuzzlesScreen} />
+        <Tab.Screen name="Transcription" component={TranscriptionScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
