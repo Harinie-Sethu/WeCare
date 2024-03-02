@@ -6,12 +6,19 @@ import DashboardScreen from './screens/DashboardScreen'; // Page 0
 import VitalsScreen from './screens/VitalsScreen'; // Page 1
 import PuzzlesScreen from './screens/PuzzlesScreen'; // Page 2
 import TranscriptionScreen from './screens/TranscriptionScreen'; // Page 3
-
+import {
+  Card,
+  Title,
+  Paragraph,
+  List,
+  PaperProvider,
+} from 'react-native-paper';
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
 
 // App component
 const App: React.FC = () => {
+  
   return (
     <NavigationContainer>
       {/* Bottom tab navigator for the main screens */}

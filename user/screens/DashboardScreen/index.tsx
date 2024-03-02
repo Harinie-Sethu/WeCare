@@ -1,9 +1,15 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View,Text } from 'react-native';
 import {NavigationContainer, } from '@react-navigation/native'
 import {createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack'
-
-const Stack = createNativeStackNavigator();
+import {
+  Card,
+  Title,
+  Button,
+  Paragraph,
+  List,
+  PaperProvider,
+} from 'react-native-paper';
 
 // Define the DashboardScreenProps type
 type DashboardScreenProps = {
@@ -13,15 +19,16 @@ type DashboardScreenProps = {
 
 const DashboardScreen: React.FC <DashboardScreenProps> = ({navigation}) => {
   return (
-    <View>
+    <PaperProvider>
+      
       <Text>Main opening screen</Text>
       {/* Button 1 */}
-      <Button title="Start Doctor Transcription" onPress={() => navigation.navigate('Transcription')} />
+      <Button  onPress={() => navigation.navigate('Transcription')}>Start Doctor Transcription</Button>
       {/* Button 2 */}
-      <Button title="Log Vitals" onPress={() => navigation.navigate('Vitals')} />
+      <Button  onPress={() => navigation.navigate('Vitals')} >Log Vitals</Button>
       {/* Button 3 */}
-      <Button title="Cognition Puzzles" onPress={() => navigation.navigate('Puzzles')} />
-    </View>
+      <Button  onPress={() => navigation.navigate('Puzzles')} >Cognition Puzzles</Button>
+    </PaperProvider>
   );
 };
 
