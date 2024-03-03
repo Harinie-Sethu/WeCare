@@ -23,11 +23,11 @@ const DashboardScreen: React.FC <DashboardScreenProps> = ({navigation}) => {
       
       <Text>Main opening screen</Text>
       {/* Button 1 */}
-      <Button  onPress={() => navigation.navigate('Transcription')}>Start Doctor Transcription</Button>
+      <Button mode = "contained" onPress={() => navigation.navigate('Transcription')}>Start Doctor Transcription</Button>
       {/* Button 2 */}
-      <Button  onPress={() => navigation.navigate('Vitals')} >Log Vitals</Button>
+      <Button  mode = "contained" onPress={() => navigation.navigate('Vitals')} >Log Vitals</Button>
       {/* Button 3 */}
-      <Button  onPress={() => navigation.navigate('Puzzles')} >Cognition Puzzles</Button>
+      <Button  mode = "contained" onPress={() => navigation.navigate('Puzzles')} >Cognition Puzzles</Button>
     </PaperProvider>
   );
 };

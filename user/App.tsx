@@ -11,15 +11,26 @@ import {
   Title,
   Paragraph,
   List,
+  DefaultTheme,
   PaperProvider,
 } from 'react-native-paper';
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
 
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#3498db',
+    accent: '#f1c40f',
+  },
+};
 // App component
 const App: React.FC = () => {
   
   return (
+    <PaperProvider theme = {theme}>
     <NavigationContainer>
       {/* Bottom tab navigator for the main screens */}
       <Tab.Navigator>
@@ -29,6 +40,7 @@ const App: React.FC = () => {
         <Tab.Screen name="Transcription" component={TranscriptionScreen} />
       </Tab.Navigator>
     </NavigationContainer>
+    </PaperProvider>
   );
 };
 
