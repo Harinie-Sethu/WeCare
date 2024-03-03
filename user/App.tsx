@@ -14,23 +14,25 @@ import {
   DefaultTheme,
   PaperProvider,
 } from 'react-native-paper';
+import {styles,theme} from './stylesheet';
+
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
 
-const theme = {
-  ...DefaultTheme,
-  roundness: 2,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: '#3498db',
-    accent: '#f1c40f',
-  },
-};
+// const theme = {
+//   ...DefaultTheme,
+//   roundness: 2,
+//   colors: {
+//     ...DefaultTheme.colors,
+//     primary: '#3498db',
+//     accent: '#f1c40f',
+//   },
+// };
 // App component
 const App: React.FC = () => {
   
   return (
-    <PaperProvider theme = {theme}>
+    <PaperProvider>
     <NavigationContainer>
       {/* Bottom tab navigator for the main screens */}
       <Tab.Navigator>

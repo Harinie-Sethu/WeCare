@@ -1,15 +1,43 @@
 import React, { useState } from 'react';
 import {FlatList} from 'react-native'
 import {createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Button, Text,TextInput, PaperProvider } from 'react-native-paper';
+import { Card,Button, Text,TextInput, PaperProvider } from 'react-native-paper';
 import {styles,theme} from '../stylesheet';
+import { StyleSheet} from 'react-native';
+import { View } from 'react-native';
 const Stack = createNativeStackNavigator();
+
 
 // Define the DashboardScreenProps type
 type VitalsScreenProps = {
   navigation: NativeStackNavigationProp<any, 'Vitals'>;
 };
+const vitalStyles = StyleSheet.create({
+  
+  button: {
+      margin:15,
+      width:300,
+      alignSelf:'center',
+      height:50,
+      backgroundColor:'#501677',
+      justifyContent: 'center'
+      // color:'purple'
+    },
+  card: {
+      margin:15,
+      width:300,
+      alignSelf:'center',
+      borderColor:'blue',
+      height:100,
+      backgroundColor:'white',
+      justifyContent: 'center'
+      // color:'purple'
+    },
+    contentWrapper: {
+      flexGrow: 1, // Allow content to expand vertically
+    },
 
+  });
 
 interface VitalsEntry {
   type: string;
@@ -115,43 +143,55 @@ const VitalsScreen: React.FC<VitalsScreenProps> = ({navigation}) => {
 
   return (
     <PaperProvider theme = {theme}>
-      <Text>{getCurrentDateTime()}</Text>
+      <View style = {styles.view}>
+            
+
+            <Text style={ [styles.QuestionText,{ position: 'absolute', bottom: 0, right: 0, fontSize:12 }]}>{(getCurrentDateTime())}</Text>
       
         <TextInput
           placeholder="Enter weight"
           value={weight}
           onChangeText={(text) => setWeight(text)}
+          style = {styles.textInput}
         />
-        <Button  onPress={handleWeightEntry} >Confirm</Button>
+        <Button mode = "contained" style= {vitalStyles.button} onPress={handleWeightEntry} >Confirm</Button>
 
       
         <TextInput
           placeholder="Enter blood pressure"
           value={bloodPressure}
           onChangeText={(text) => setBloodPressure(text)}
+          style = {styles.textInput}
         />
-        <Button  onPress={handleBloodPressureEntry} >Confirm</Button>
+        <Button  mode = "contained" style= {vitalStyles.button} onPress={handleBloodPressureEntry} >Confirm</Button>
 
       
         <TextInput
+          theme = {{roundness:10}}
           placeholder="Enter glucose level"
           value={glucoseLevel}
           onChangeText={(text) => setGlucoseLevel(text)}
+          style = {styles.textInput}
         />
-        <Button onPress={handleGlucoseLevelEntry} >Confirm</Button>
+        <Button mode = "contained" style= {vitalStyles.button} onPress={handleGlucoseLevelEntry} >Confirm</Button>
 
       <FlatList
         data={vitalsEntries}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-        <PaperProvider theme = {theme}>
+        <Card mode = "contained" style = {vitalStyles.card}>
+          <View style={vitalStyles.contentWrapper} >  
             <Text>{`${item.type}: ${item.value}`}</Text>
-            <Button  onPress={() => handleEdit(item.id)} >Edit</Button>
-            <Button  onPress={() => handleDelete(item.id)} >Confirm</Button>
-        </PaperProvider>
+            <Card.Actions>
+              <Button onPress={() => handleEdit(item.id)}>Edit</Button>
+              <Button onPress={() => handleDelete(item.id)}>Delete</Button>
+            </Card.Actions>
+          </View>
+        </Card>
     
         )}
       />
+      </View>
     </PaperProvider>
   );
 };
