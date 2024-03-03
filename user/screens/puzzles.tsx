@@ -1,32 +1,9 @@
-// File: src/screens/PuzzlesScreen/index.tsx
-// import React from 'react';
-// import { View, Text } from 'react-native';
-// import HomeButton from '../../components/HomeButton';
-// import {createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-// const Stack = createNativeStackNavigator();
-
-// // Define the DashboardScreenProps type
-// type PuzzlesScreenProps = {
-//   navigation: NativeStackNavigationProp<any, 'Puzz'>;
-// };
-
-// const PuzzlesScreen: React.FC <PuzzlesScreenProps> = ({navigation}) => {
-//   return (
-//     <View>
-//       <Text>Puzzles Screen</Text>
-//       {/* Add UI for cognition puzzles */}
-//       <HomeButton onPress={() => navigation.navigate('Dashboard')} />
-//     </View>
-//   );
-// };
-
-// export default PuzzlesScreen;
 
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, TextInput, Alert } from 'react-native';
 import { useNavigation,useIsFocused } from '@react-navigation/native';
-import HomeButton from '../../components/HomeButton';
+
 
 const PuzzlesScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -74,7 +51,6 @@ const PuzzlesScreen: React.FC = () => {
             onChangeText={(text) => questions[currentStep].stateUpdater(text)}
           />
           <Button title="Next" onPress={handleNextStep} />
-          <HomeButton onPress={() => navigation.navigate('Dashboard')} />
         </View>
       )}
     </View>

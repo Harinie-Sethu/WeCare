@@ -2,10 +2,10 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import DashboardScreen from './screens/DashboardScreen'; // Page 0
-import VitalsScreen from './screens/VitalsScreen'; // Page 1
-import PuzzlesScreen from './screens/PuzzlesScreen'; // Page 2
-import TranscriptionScreen from './screens/TranscriptionScreen'; // Page 3
+import DashboardScreen from './screens/dashboard'; // Page 0
+import VitalsScreen from './screens/vitals'; // Page 1
+import PuzzlesScreen from './screens/puzzles'; // Page 2
+import TranscriptionScreen from './screens/transcription'; // Page 3
 import {
   Card,
   Title,
