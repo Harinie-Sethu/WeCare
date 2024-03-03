@@ -6,12 +6,10 @@ const styles = StyleSheet.create({
     container: {
       margin:5,
     },
-    top: {
-      flex: 0.3,
-      backgroundColor: 'grey',
-      borderWidth: 5,
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
+    view: {
+      backgroundColor: 'blue',
+      width: '100%',
+      height: '100%',
     },
     middle: {
       flex: 0.3,
@@ -30,10 +28,11 @@ const styles = StyleSheet.create({
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: "red",
-      secondary: "yellow",
-      background: "white",
-      surface: "white",
+      primary: "purple",
+      secondary: "blue",
+      background: "blue",
+      surface: "blue",
+      accent: '#f1c40f',
     },
   };
   export { styles, theme };
